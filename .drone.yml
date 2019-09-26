@@ -17,7 +17,12 @@ steps:
   - name: publish
     image: plugins/github-release
     settings:
-
+      api_key:
+        from_secret: github_token
+      files:
+        - build.tar.gz
+    when:
+      event: tag
   - name: notify
     image: plugins/slack
     settings:
