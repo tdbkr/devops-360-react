@@ -8,6 +8,6 @@ steps:
       - npm install
       - npm run build
   - name: test
-      image: node:alpine
-      commands:
-        - npm test
+    image: node:alpine
+    commands:
+      - npm test
