@@ -2,21 +2,26 @@ kind: pipeline
 name: react-ci-cd
 
 steps:
-  - name: build
+  - name: deps
     image: node:alpine
     commands:
       - npm install
+  - name: build
+    image: node:alpine
+    commands:
       - npm run build
   - name: test
     image: node:alpine
     commands:
       - npm test
+  - name: publish
+    image: plugins/github-release
+    settings:
+
   - name: notify
     image: plugins/slack
     settings:
       webhook: https://hooks.slack.com/services/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
       channel: drone-thomasdebacker
-      username: Drone
-      icon_url: https://avatars0.githubusercontent.com/u/2181346?s=400&v=4
     when:
       status: [ success, failure ]
