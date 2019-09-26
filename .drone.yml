@@ -14,7 +14,11 @@ steps:
     image: node:alpine
     commands:
       - npm test
-  - name: publish
+  - name: pre-release
+    image: node:alpine
+    commands:
+      - tar -zcvf build.tar.gz build/
+  - name: release
     image: plugins/github-release
     settings:
       api_key:
