@@ -1,0 +1,8 @@
+kind: pipeline
+name: react-ci-cd
+
+steps:
+  - name: echo
+    image: node:alpine
+    commands:
+      - echo 'Run CI / CD Pipeline on Drone'
