@@ -18,6 +18,8 @@ steps:
     image: node:alpine
     commands:
       - tar -zcvf build.tar.gz build/
+    when:
+        event: tag
   - name: release
     image: plugins/github-release
     settings:
